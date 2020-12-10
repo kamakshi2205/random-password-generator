@@ -1,7 +1,7 @@
 #include <conio.h>
 #include <stdio.h>
 #include <cstdlib>
-#include <Windows.h> // use < > for all system and library headers
+#include <Windows.h> 
 #include <winuser.h>
 #include <cmath>
 #include <iostream>
@@ -238,13 +238,13 @@
           case 1:
               cout << "Enter Length :  ";
               cin >> length;
-              //if length is less than 7 , program  will show error
+              //if length is less than 12 , program  will show error
               if (length < 12) {
                   cout << "\nError : Password Length Should be atleast 7\n";
                   cout << "Press any key to try again \n";
                   getchar();
               }
-              // Length should not exceed 100 , program should show error if it exceeds
+              // Length should not exceed 32 , program should show error if it exceeds
               else if (length > 32) {
                   cout << "\nError : Maximum length of password should be 100\n";
                   cout << "Press any key to try again \n";
