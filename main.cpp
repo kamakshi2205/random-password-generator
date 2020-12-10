@@ -10,20 +10,7 @@
 #include <string.h>
   using namespace std;
 
-  void toClipboard(HWND hwnd, const std::string &s){
-  	OpenClipboard(hwnd);
-  	EmptyClipboard();
-  	HGLOBAL hg=GlobalAlloc(GMEM_MOVEABLE,s.size()+1);
-  	if (!hg){
-  		CloseClipboard();
-  		return;
-  	}
-  	memcpy(GlobalLock(hg),s.c_str(),s.size()+1);
-  	GlobalUnlock(hg);
-  	SetClipboardData(CF_TEXT,hg);
-  	CloseClipboard();
-  	GlobalFree(hg);
-  }
+  
 
   unsigned int MyRand(unsigned int start_range,unsigned int end_range)
     {
@@ -65,6 +52,21 @@
 
       int key = MyRand(0,25);
       return key;
+  }
+
+void toClipboard(HWND hwnd, const std::string &s){
+  	OpenClipboard(hwnd);
+  	EmptyClipboard();
+  	HGLOBAL hg=GlobalAlloc(GMEM_MOVEABLE,s.size()+1);
+  	if (!hg){
+  		CloseClipboard();
+  		return;
+  	}
+  	memcpy(GlobalLock(hg),s.c_str(),s.size()+1);
+  	GlobalUnlock(hg);
+  	SetClipboardData(CF_TEXT,hg);
+  	CloseClipboard();
+  	GlobalFree(hg);
   }
   void generate_password(int length)
   {
@@ -210,8 +212,6 @@
        else
        cout<<endl<<"Invalid choice\n";
 
-      size_t leng = strlen(password.c_str());
-      cout << leng << " char(s)" << endl;
 
       cout << "\n\nPress any key continue \n";
       getchar();
